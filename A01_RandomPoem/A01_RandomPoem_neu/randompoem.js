@@ -1,24 +1,23 @@
 "use strict";
-console.log("Expecto Patronum");
 var RandomPoem;
 (function (RandomPoem) {
-    let subjects = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
-    let predicate = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
-    let objects = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
-    console.log({ subjects, predicate, objects });
-    for (let i = subjects.length; i >= 1; i--) {
-        let Ergebniss = getVerse(subjects, predicate, objects);
-        console.log(Ergebniss, i);
+    RandomPoem.subjects = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
+    RandomPoem.predicates = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
+    RandomPoem.objects = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
+    let poem = "";
+    for (let i = RandomPoem.subjects.length; i > 0; i--) {
+        poem = getVerse(RandomPoem.subjects, RandomPoem.predicates, RandomPoem.objects);
+        console.log(poem);
     }
-    function getVerse(_subjects, _predicate, _objects) {
-        let verse = "";
-        let subjectnumber = Math.floor(Math.random() * _subjects.length);
-        let subjectresult = Math.floor(Math.random() * _subjects.length);
-        let predicatenumber = Math.floor(Math.random() * _predicate.length);
-        let predicateresult = Math.floor(Math.random() * _predicate.length);
-        let objectnumber = Math.floor(Math.random() * _objects.length);
-        let objectresult = Math.floor(Math.random() * _objects.length);
-        return "alohomora";
+    function getVerse(_subjects, _predicates, _objects) {
+        let vers = "";
+        let randomSubjects = Math.floor(Math.random() * _subjects.length);
+        let randomPredicates = Math.floor(Math.random() * _predicates.length);
+        let randomObjects = Math.floor(Math.random() * _objects.length);
+        vers += RandomPoem.subjects.splice(randomSubjects, 1)[0] + " ";
+        vers += RandomPoem.predicates.splice(randomPredicates, 1)[0] + " ";
+        vers += RandomPoem.objects.splice(randomObjects, 1)[0];
+        return vers;
     }
 })(RandomPoem || (RandomPoem = {}));
 //# sourceMappingURL=randompoem.js.map
