@@ -2,15 +2,22 @@
 console.log("Expecto Patronum");
 var RandomPoem;
 (function (RandomPoem) {
-    let subjekte = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
-    let prädikate = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
-    let objekte = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
-    console.log({ subjekte, prädikate, objekte });
-    for (let i = subjekte.length; i >= 1; i--) {
-        let Ergebniss = getVerse([], [], []);
+    let subjects = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
+    let predicate = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
+    let objects = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
+    console.log({ subjects, predicate, objects });
+    for (let i = subjects.length; i >= 1; i--) {
+        let Ergebniss = getVerse(subjects, predicate, objects);
         console.log(Ergebniss, i);
     }
-    function getVerse(_subjekte, _prädikate, _objkete) {
+    function getVerse(_subjects, _predicate, _objects) {
+        let verse = "";
+        let subjectnumber = Math.floor(Math.random() * _subjects.length);
+        let subjectresult = Math.floor(Math.random() * _subjects.length);
+        let predicatenumber = Math.floor(Math.random() * _predicate.length);
+        let predicateresult = Math.floor(Math.random() * _predicate.length);
+        let objectnumber = Math.floor(Math.random() * _objects.length);
+        let objectresult = Math.floor(Math.random() * _objects.length);
         return "alohomora";
     }
 })(RandomPoem || (RandomPoem = {}));
