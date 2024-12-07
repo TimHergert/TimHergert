@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f0f0;
+  }
+  
+  .scene {
+    width: 90%;
+    max-width: 500px;
+    aspect-ratio: 2 / 3;
+  }
+  
+  .artwork {
+    width: 100%;
+  }
+
+    
+  
