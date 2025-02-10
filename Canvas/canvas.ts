@@ -20,7 +20,7 @@ function drawBackground() {
     gradient.addColorStop(0, randomColor());
     gradient.addColorStop(1, randomColor());
     crc2.fillStyle = gradient;
-    crc2.fillRect(0, 0, canvas.width, canvas.height);
+    crc2.fillRect(0,0, canvas.width, canvas.height);
 }
 
 function drawCircles(count: number) {

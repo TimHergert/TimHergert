@@ -116,3 +116,4 @@ var L10_OldMacDonals;
         checkDayProgress();
     });
 })(L10_OldMacDonals || (L10_OldMacDonals = {}));
+//# sourceMappingURL=OldMacDonaldsFarm.js.map

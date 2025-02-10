@@ -1,68 +1,51 @@
 "use strict";
-var farm;
-(function (farm) {
-    window.addEventListener("load", handleLoad);
-    let asteroids = [];
-    function handleLoad(_event) {
-        console.log("FarmSimulation");
-        let canvas = document.querySelector("canvas");
-        if (!canvas)
-            return;
-        farm.crc2 = canvas.getContext("2d");
-        farm.crc2.fillStyle = "green";
-        farm.crc2.strokeStyle = "blue";
-        farm.createPaths();
-        console.log("farm paths: ", farm.farmPaths);
-        createAsteroids(5);
-        
-        
-        canvas.addEventListener("mouseup", eatgrass);
-        // canvas.addEventListener("keypress", handleKeypress);
-        // canvas.addEventListener("mousemove", setHeading);
-        window.setInterval(update, 20);
-    }
-    function eatgrass(_event) {
-        console.log("eat grass");
-        let hotspot = new farm.Vector(_event.clientX - farm.canvas.offsetLeft, _event.clientY - farm.crc2.canvas.offsetTop);
-        let animaleat = getanimaleat(hotspot);
-        console.log(asteroidHit);
-        if (asteroidHit)
-            breakAsteroid(asteroidHit);
-    }
-    function getanimaleat(_hotspot) {
-        for (let asteroid of asteroids) {
-            if (asteroid.isHit(_hotspot))
-                return asteroid;
+var farmsimulation;
+(function (farmsimulation) {
+    class animals {
+        position;
+        velocity;
+        type;
+        size;
+        constructor(_size, _position) {
+            console.log("");
+            if (_position)
+                this.position = _position;
+            else
+                this.position = new Vector(0, 0);
+            this.velocity = new Vector(0, 0);
+            this.velocity.random(100, 200);
+            this.type = Math.floor(Math.random() * 4);
+            this.size = _size;
         }
-        return null;
-    }
-    function breakAsteroid(_asteroid) {
-        if (_asteroid.size > 0.3) {
-            for (let i = 0; i < 2; i++) {
-                let fragment = new L09_Asteroids.Asteroid(_asteroid.size / 2, _asteroid.position);
-                fragment.velocity.add(_asteroid.velocity);
-                asteroids.push(fragment);
-            }
-        }   
-        let index = asteroids.indexOf(_asteroid);
-        asteroids.splice(index, 1);
-    }
-    function createAsteroids(_nAsteroids) {
-        console.log("Create asteroids");
-        for (let i = 0; i < _nAsteroids; i++) {
-            let asteroid = new L09_Asteroids.Asteroid(1.0);
-            asteroids.push(asteroid);
+        move(_timeslice) {
+            // console.log("animal move");
+            let offset = new Vector(this.velocity.x, this.velocity.y);
+            offset.scale(_timeslice);
+            this.position.add(offset);
+            if (this.position.x < 0)
+                this.position.x += crc2.canvas.width;
+            if (this.position.y < 0)
+                this.position.y += crc2.canvas.height;
+            if (this.position.x > crc2.canvas.width)
+                this.position.x -= crc2.canvas.width;
+            if (this.position.y > crc2.canvas.height)
+                this.position.y -= crc2.canvas.height;
+        }
+        draw() {
+            // console.log("Asteroid draw");
+            crc2.save();
+            crc2.translate(this.position.x, this.position.y);
+            crc2.scale(this.size, this.size);
+            crc2.translate(-50, -50);
+            crc2.stroke(asteroidPaths[this.type]);
+            crc2.restore();
+        }
+        isHit(_hotspot) {
+            let hitsize = 50 * this.size;
+            let difference = new Vector(_hotspot.x - this.position.x, _hotspot.y - this.position.y);
+            return (Math.abs(difference.x) < hitsize && Math.abs(difference.y) < hitsize);
         }
     }
-    function update() {
-        console.log("Update");
-        L09_Asteroids.crc2.fillRect(0, 0, cow.crc2.canvas.width, cow.crc2.canvas.height);
-        for (let cow of animals) {
-            cow.move(1 / 50);
-            cow.draw();
-        }
-        
-        // handleCollisions();
-    }
-})(farm || (farm = {}));
-//# sourceMappingURL=Main.js.map
+    farmsimulation.animals = animals;
+})(farmsimulation || (farmsimulation = {}));
+//# sourceMappingURL=Farm.js.map

@@ -11,3 +11,4 @@ var L10_OldMacDonals;
     }
     L10_OldMacDonals.Chicken = Chicken;
 })(L10_OldMacDonals || (L10_OldMacDonals = {}));
+//# sourceMappingURL=chicken.js.map

@@ -11,3 +11,4 @@ var L10_OldMacDonals;
     }
     L10_OldMacDonals.Dog = Dog;
 })(L10_OldMacDonals || (L10_OldMacDonals = {}));
+//# sourceMappingURL=dog.js.map

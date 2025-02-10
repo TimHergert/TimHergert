@@ -1,12 +1,10 @@
 "use strict";
 var L10_OldMacDonals;
 (function (L10_OldMacDonals) {
-    class Farm {
-        constructor() {
-            this.animals = [];
-            this.foodInventory = { "Grass": 600, "Grains": 600, "Meat": 600, "Junk": 600, "Hay": 600, };
-            this.currentDay = 1;
-        }
+    class farm {
+        animals = [];
+        foodInventory = { "Grass": 600, "Grains": 600, "Meat": 600, "Junk": 600, "Hay": 600, };
+        currentDay = 1;
         addAnimal(animal) {
             this.animals.push(animal);
         }
@@ -51,5 +49,6 @@ var L10_OldMacDonals;
             });
         }
     }
-    L10_OldMacDonals.Farm = Farm;
+    L10_OldMacDonals.farm = farm;
 })(L10_OldMacDonals || (L10_OldMacDonals = {}));
+//# sourceMappingURL=farm.js.map

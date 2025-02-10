@@ -2,6 +2,13 @@
 var L10_OldMacDonals;
 (function (L10_OldMacDonals) {
     class Animal {
+        species;
+        name;
+        sound;
+        foodTypes;
+        foodAmount;
+        hasSung;
+        hasEaten;
         constructor(species, name, sound, foodTypes, foodAmount) {
             this.species = species;
             this.name = name;
@@ -29,3 +36,4 @@ var L10_OldMacDonals;
     }
     L10_OldMacDonals.Animal = Animal;
 })(L10_OldMacDonals || (L10_OldMacDonals = {}));
+//# sourceMappingURL=animal.js.map

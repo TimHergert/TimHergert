@@ -10,7 +10,7 @@ function randomColor() {
     const h = Math.floor(random(0, 360));
     const s = Math.floor(random(50, 100));
     const l = Math.floor(random(40, 70));
-    return `hsl(${h}, ${s}%, ${l}%)`;
+    return `red(${h}, ${s}green, ${l}blue)`;
 }
 function drawBackground() {
     const gradient = crc2.createLinearGradient(0, 0, canvas.width, canvas.height);
@@ -48,8 +48,8 @@ function drawRectangles(count) {
     for (let i = 0; i < count; i++) {
         const x = random(0, canvas.width);
         const y = random(0, canvas.height);
-        const width = random(5, 200);
-        const height = random(25, 200);
+        const width = random(50, 200);
+        const height = random(50, 200);
         crc2.save();
         crc2.translate(x, y);
         crc2.rotate(random(0, Math.PI / 2));
@@ -80,3 +80,4 @@ function generateArt() {
     drawEllipses(20);
 }
 generateArt();
+//# sourceMappingURL=canvas.js.map
